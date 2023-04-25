@@ -1,0 +1,42 @@
+---
+# tasks file for ansible-role-win-evergreen
+- name: Ensure {{ win_appinstall_download_dir }} exists
+  ansible.windows.win_file:
+    path: "{{ win_appinstall_download_dir }}"
+    state: directory
+
+- name: Download {{ win_appinstall_url }}
+  ansible.windows.win_get_url:
+    follow_redirects: "{{ win_appinstall_follow_redirects | default(omit) }}"
+    force: "{{ win_appinstall_download_force | default(omit) }}"
+    dest: '{{ win_appinstall_download_dir }}\'
+    url: "{{ win_appinstall_url }}"
+    validate_certs: "{{ win_appinstall_validate_certs | default(omit) }}"
+  register: download_app_result
+
+- name: Debug download_app_result
+  ansible.builtin.debug:
+    var: download_app_result
+
+- name: Install package for {{ win_appinstall_url }}
+  ansible.windows.win_package:
+    arguments: "{{ win_appinstall_arguments | default(omit) }}"
+    chdir: "{{ win_appinstall_chdir | default(omit) }}"
+    creates_path: "{{ win_appinstall_creates_path | default(omit) }}"
+    creates_service: "{{ win_appinstall_creates_service | default(omit) }}"
+    creates_version: "{{ win_appinstall_creates_version | default(omit) }}"
+    expected_return_codes: "{{ win_appinstall_expected_return_codes | default(omit) }}"
+    follow_redirects: "{{ win_appinstall_follow_redirects | default(omit) }}"
+    log_path: "{{ win_appinstall_log_path | default(omit) }}"
+    path: "{{ download_app_result.dest }}"
+    product_id: "{{ win_appinstall_product_id | default(omit) }}"
+    provider: "{{ win_appinstall_provider | default(omit) }}"
+    state: "{{ win_appinstall_state | default('present') }}"
+    validate_certs: "{{ win_appinstall_validate_certs | default(omit) }}"
+    wait_for_children: "{{ win_appinstall_wait_for_children | default(omit) }}"
+  register: install_package_result
+
+- name: Debug install_package_result
+  ansible.builtin.debug:
+    var: install_package_result
+...

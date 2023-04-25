@@ -1,0 +1,29 @@
+---
+# defaults file for ansible-role-win-evergreen
+
+# @var win_appinstall_download_dir:description: Download directory
+win_appinstall_download_dir: 'C:\windows\temp\win_appinstall'
+
+# @var win_appinstall_url:description: Download URL
+win_appinstall_url: ''
+
+# @var win_appinstall_download_force:description: orce download, also when file already exists
+win_appinstall_download_force: false
+
+# Checkout optional variables in Task "Install package for"
+# https://docs.ansible.com/ansible/latest/collections/ansible/windows/win_package_module.html
+
+# win_appinstall_arguments
+# win_appinstall_chdir
+# win_appinstall_creates_path
+# win_appinstall_creates_service
+# win_appinstall_creates_version
+# win_appinstall_expected_return_codes
+# win_appinstall_follow_redirects
+# win_appinstall_log_path
+# win_appinstall_product_id
+# win_appinstall_provider
+# win_appinstall_state
+# win_appinstall_validate_certs
+# win_appinstall_wait_for_children
+...
