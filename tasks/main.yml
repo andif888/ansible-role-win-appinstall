@@ -1,5 +1,5 @@
 ---
-# tasks file for ansible-role-win-evergreen
+# tasks file for ansible-role-win-appinstall
 - name: Ensure {{ win_appinstall_download_dir }} exists
   ansible.windows.win_file:
     path: "{{ win_appinstall_download_dir }}"
@@ -12,6 +12,11 @@
     dest: '{{ win_appinstall_download_dir }}\'
     url: "{{ win_appinstall_url }}"
     validate_certs: "{{ win_appinstall_validate_certs | default(omit) }}"
+    proxy_password: '{{ win_appinstall_proxy_password | default(omit) }}'
+    proxy_url : '{{ win_appinstall_proxy_url  | default(omit) }}'
+    proxy_use_default_credential: '{{ win_appinstall_proxy_use_default_credential | default(omit) }}'
+    proxy_username: '{{ win_appinstall_proxy_username | default(omit) }}'
+
   register: download_app_result
 
 - name: Debug download_app_result

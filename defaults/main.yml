@@ -1,5 +1,5 @@
 ---
-# defaults file for ansible-role-win-evergreen
+# defaults file for ansible-role-win-appinstall
 
 # @var win_appinstall_download_dir:description: Download directory
 win_appinstall_download_dir: 'C:\windows\temp\win_appinstall'
@@ -26,4 +26,10 @@ win_appinstall_download_force: false
 # win_appinstall_state
 # win_appinstall_validate_certs
 # win_appinstall_wait_for_children
+
+# win_appinstall_proxy_password
+# win_appinstall_proxy_url
+# win_appinstall_proxy_use_default_credential
+# win_appinstall_proxy_username
+
 ...
