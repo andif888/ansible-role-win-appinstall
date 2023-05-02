@@ -4,6 +4,9 @@
 # @var win_appinstall_download_dir:description: Download directory
 win_appinstall_download_dir: 'C:\windows\temp\win_appinstall'
 
+# @var win_appinstall_download_filename:description: Download filename
+win_appinstall_download_filename: ""
+
 # @var win_appinstall_url:description: Download URL
 win_appinstall_url: ''
 

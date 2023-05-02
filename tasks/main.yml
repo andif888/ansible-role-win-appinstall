@@ -9,7 +9,7 @@
   ansible.windows.win_get_url:
     follow_redirects: "{{ win_appinstall_follow_redirects | default(omit) }}"
     force: "{{ win_appinstall_download_force | default(omit) }}"
-    dest: '{{ win_appinstall_download_dir }}\'
+    dest: '{{ win_appinstall_download_dir }}\{{ win_appinstall_download_filename }}'
     url: "{{ win_appinstall_url }}"
     validate_certs: "{{ win_appinstall_validate_certs | default(omit) }}"
     proxy_password: '{{ win_appinstall_proxy_password | default(omit) }}'
